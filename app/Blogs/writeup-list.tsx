@@ -9,24 +9,24 @@ import { Calendar, Clock, Tag, Search, ArrowRight } from "lucide-react";
 import { MDXContent } from "@/lib/mdx";
 
 interface WriteupListProps {
-    writeups: MDXContent[];
+    Blogs: MDXContent[];
 }
 
-export function WriteupList({ writeups }: WriteupListProps) {
+export function WriteupList({ Blogs }: WriteupListProps) {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
     // Get all unique tags
     const allTags = useMemo(() => {
         const tags = new Set<string>();
-        writeups.forEach(writeup => {
+        Blogs.forEach(writeup => {
             writeup.frontmatter.tags?.forEach(tag => tags.add(tag));
         });
         return Array.from(tags).sort();
-    }, [writeups]);
+    }, [Blogs]);
 
-    const filteredWriteups = useMemo(() => {
-        return writeups.filter(writeup => {
+    const filteredBlogs = useMemo(() => {
+        return Blogs.filter(writeup => {
             // Search filter
             const matchesSearch =
                 writeup.frontmatter.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -40,7 +40,7 @@ export function WriteupList({ writeups }: WriteupListProps) {
 
             return matchesSearch && matchesTags;
         });
-    }, [writeups, searchQuery, selectedTags]);
+    }, [Blogs, searchQuery, selectedTags]);
 
     const toggleTag = (tag: string) => {
         setSelectedTags(prev =>
@@ -52,7 +52,7 @@ export function WriteupList({ writeups }: WriteupListProps) {
         <div className="space-y-8">
             <div className="flex flex-col md:flex-row gap-8 items-center justify-between">
                 <div className="space-y-4 text-center md:text-left">
-                    <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Writeups</h1>
+                    <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Blogs</h1>
                     <p className="text-muted-foreground text-lg max-w-2xl">
                         detailed ctf walkthroughs and security analysis reports.
                     </p>
@@ -91,9 +91,9 @@ export function WriteupList({ writeups }: WriteupListProps) {
             )}
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredWriteups.length > 0 ? (
-                    filteredWriteups.map((writeup) => (
-                        <Link key={writeup.slug} href={`/writeups/${writeup.slug}`} className="group">
+                {filteredBlogs.length > 0 ? (
+                    filteredBlogs.map((writeup) => (
+                        <Link key={writeup.slug} href={`/Blogs/${writeup.slug}`} className="group">
                             <Card className="h-full flex flex-col overflow-hidden hover:border-foreground/50 transition-colors">
                                 <div className="aspect-video relative overflow-hidden bg-muted border-b border-border">
                                     {writeup.frontmatter.cover ? (

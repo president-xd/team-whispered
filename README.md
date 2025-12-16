@@ -7,7 +7,7 @@ A modern, macOS-inspired website for a cybersecurity/CTF team built with Next.js
 - 🎨 **macOS-inspired Design**: Glassmorphism effects, smooth animations, and premium UI
 - 🧭 **Dock Navigation**: Auto-hiding navbar with magnification effects like macOS Dock
 - 🌓 **Theme Switching**: Light/Dark/System modes with localStorage persistence
-- 📝 **MDX Content**: All content (writeups, team, sponsors) managed via MDX files
+- 📝 **MDX Content**: All content (Blogs, team, sponsors) managed via MDX files
 - 🔍 **SEO Optimized**: Metadata, OpenGraph, sitemap, robots.txt
 - ♿ **Accessible**: Keyboard navigation, focus states, reduced motion support
 - 🚀 **Performance**: Fast loading, lazy images, code-splitting
@@ -49,7 +49,7 @@ team-website/
 │   ├── layout.tsx         # Root layout with theme provider
 │   ├── page.tsx           # Home page
 │   ├── team/              # Team page
-│   ├── writeups/          # Writeups listing and detail pages
+│   ├── Blogs/          # Blogs listing and detail pages
 │   ├── sponsors/          # Sponsors page
 │   ├── join/              # Join/application page
 │   ├── sitemap.ts         # Dynamic sitemap
@@ -59,7 +59,7 @@ team-website/
 │   ├── ui/                # UI components (Button, Card, etc.)
 │   └── mdx/               # MDX components (CodeBlock, Callout)
 ├── content/               # MDX content files
-│   ├── writeups/          # Blog posts/writeups
+│   ├── Blogs/          # Blog posts/Blogs
 │   ├── team/              # Team member profiles
 │   ├── sponsors/          # Sponsor information
 │   └── join/              # Join page content
@@ -67,14 +67,14 @@ team-website/
 │   ├── mdx.ts            # MDX content loaders
 │   └── utils.ts          # General utilities
 └── public/               # Static assets
-    └── images/           # Images for team, writeups, sponsors
+    └── images/           # Images for team, Blogs, sponsors
 ```
 
 ## Adding Content
 
-### Writeups
+### Blogs
 
-Create a new `.mdx` file in `content/writeups/`:
+Create a new `.mdx` file in `content/Blogs/`:
 
 ```mdx
 ---
@@ -82,7 +82,7 @@ title: "Your Writeup Title"
 date: "2024-12-15"
 tags: ["web", "crypto"]
 summary: "Brief description"
-cover: "/images/writeups/cover.jpg"
+cover: "/images/Blogs/cover.jpg"
 ---
 
 Your content here with full MDX support!

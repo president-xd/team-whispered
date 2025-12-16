@@ -1,12 +1,12 @@
 import { MetadataRoute } from "next";
-import { getAllWriteups } from "@/lib/mdx";
+import { getAllBlogs } from "@/lib/mdx";
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = "https://wh1sp3r3d.com";
 
-    const writeups = getAllWriteups();
-    const writeupUrls = writeups.map((writeup) => ({
-        url: `${baseUrl}/writeups/${writeup.slug}`,
+    const Blogs = getAllBlogs();
+    const writeupUrls = Blogs.map((writeup) => ({
+        url: `${baseUrl}/Blogs/${writeup.slug}`,
         lastModified: writeup.frontmatter.date
             ? new Date(writeup.frontmatter.date)
             : new Date(),
@@ -28,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.8,
         },
         {
-            url: `${baseUrl}/writeups`,
+            url: `${baseUrl}/Blogs`,
             lastModified: new Date(),
             changeFrequency: "weekly" as const,
             priority: 0.9,

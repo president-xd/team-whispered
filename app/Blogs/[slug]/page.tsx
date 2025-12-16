@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getAllWriteups, getWriteupBySlug, generateTableOfContents, getAuthors } from "@/lib/mdx";
+import { getAllBlogs, getWriteupBySlug, generateTableOfContents, getAuthors } from "@/lib/mdx";
 import { formatDate } from "@/lib/utils";
 import { Badge } from "@/components/ui/Badge";
 import { ImageFrame } from "@/components/ui/ImageFrame";
@@ -16,8 +16,8 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
 
 export async function generateStaticParams() {
-    const writeups = getAllWriteups();
-    return writeups.map((writeup) => ({
+    const Blogs = getAllBlogs();
+    return Blogs.map((writeup) => ({
         slug: writeup.slug,
     }));
 }
@@ -106,10 +106,10 @@ export default async function WriteupPage({
                     <div className="max-w-3xl">
                         <div className="relative space-y-6 border-b border-border pb-8 mb-10">
                             <Link
-                                href="/writeups"
+                                href="/Blogs"
                                 className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-block font-mono"
                             >
-                                ← Back to Writeups
+                                ← Back to Blogs
                             </Link>
 
                             <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-foreground">

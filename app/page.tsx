@@ -1,17 +1,17 @@
-import { getAllWriteups, getAllTeamMembers } from "@/lib/mdx";
+import { getAllBlogs, getAllTeamMembers } from "@/lib/mdx";
 import { HeroSection } from "@/components/home/HeroSection";
-import { LatestWriteups } from "@/components/home/LatestWriteups";
+import { LatestBlogs } from "@/components/home/LatestBlogs";
 import { TeamHighlights } from "@/components/home/TeamHighlights";
 import { SponsorCTA } from "@/components/home/SponsorCTA";
 
 export default function HomePage() {
-  const writeups = getAllWriteups().slice(0, 3);
+  const Blogs = getAllBlogs().slice(0, 3);
   const teamMembers = getAllTeamMembers().slice(0, 4);
 
   return (
     <div className="flex flex-col gap-16 md:gap-24 relative overflow-hidden">
       <HeroSection />
-      <LatestWriteups writeups={writeups} />
+      <LatestBlogs Blogs={Blogs} />
       <TeamHighlights members={teamMembers} />
       <SponsorCTA />
     </div>

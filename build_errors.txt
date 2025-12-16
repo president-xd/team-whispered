@@ -23,10 +23,10 @@ Route (app)
 Γö£ Γùï /sitemap.xml
 Γö£ Γùï /sponsors
 Γö£ Γùï /team
-Γö£ Γùï /writeups
-Γöö ΓùÅ /writeups/[slug]
-  Γö£ /writeups/crypto-timing-attack
-  Γöö /writeups/web-sql-injection-rce
+Γö£ Γùï /Blogs
+Γöö ΓùÅ /Blogs/[slug]
+  Γö£ /Blogs/crypto-timing-attack
+  Γöö /Blogs/web-sql-injection-rce
 
 
 Γùï  (Static)  prerendered as static content

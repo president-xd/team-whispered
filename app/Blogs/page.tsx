@@ -1,17 +1,17 @@
-import { getAllWriteups } from "@/lib/mdx";
+import { getAllBlogs } from "@/lib/mdx";
 import { WriteupList } from "./writeup-list";
 
 export const metadata = {
-    title: "Writeups",
+    title: "Blogs",
     description: "Detailed walkthroughs and security analysis of CTF challenges.",
 };
 
-export default function WriteupsPage() {
-    const writeups = getAllWriteups();
+export default function BlogsPage() {
+    const Blogs = getAllBlogs();
 
     return (
         <div className="container py-12 md:py-24 space-y-12">
-            <WriteupList writeups={writeups} />
+            <WriteupList Blogs={Blogs} />
         </div>
     );
 }

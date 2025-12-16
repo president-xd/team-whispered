@@ -25,7 +25,7 @@ D:\Team_Website\team-website\app\team\page.tsx
   5:37  warning  'Trophy' is defined but never used    @typescript-eslint/no-unused-vars
   5:69  warning  'Calendar' is defined but never used  @typescript-eslint/no-unused-vars
 
-D:\Team_Website\team-website\app\writeups\page.tsx
+D:\Team_Website\team-website\app\Blogs\page.tsx
   3:10  warning  'Button' is defined but never used  @typescript-eslint/no-unused-vars
 
 D:\Team_Website\team-website\components\layout\DockNavbar.tsx

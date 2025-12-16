@@ -6,16 +6,16 @@ import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 import { ArrowRight, Terminal } from "lucide-react";
 
-interface LatestWriteupsProps {
-    writeups: any[]; // Using any for simplicity as strictly typing Frontmatter can be complex depending on setup, but ideally should be typed
+interface LatestBlogsProps {
+    Blogs: any[]; // Using any for simplicity as strictly typing Frontmatter can be complex depending on setup, but ideally should be typed
 }
 
-export function LatestWriteups({ writeups }: LatestWriteupsProps) {
+export function LatestBlogs({ Blogs }: LatestBlogsProps) {
     return (
         <section className="container max-w-6xl mx-auto px-4">
             <div className="flex items-center justify-between mb-12">
                 <h2 className="text-3xl font-bold tracking-tight">Latest Posts</h2>
-                <Link href="/writeups">
+                <Link href="/Blogs">
                     <Button variant="ghost" className="rounded-none group">
                         View All <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                     </Button>
@@ -23,8 +23,8 @@ export function LatestWriteups({ writeups }: LatestWriteupsProps) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {writeups.map((post) => (
-                    <Link key={post.slug} href={`/writeups/${post.slug}`} className="group">
+                {Blogs.map((post) => (
+                    <Link key={post.slug} href={`/Blogs/${post.slug}`} className="group">
                         <Card className="h-full hover:border-foreground/50 transition-colors">
                             <div className="aspect-video relative overflow-hidden bg-muted">
                                 {post.frontmatter.cover ? (

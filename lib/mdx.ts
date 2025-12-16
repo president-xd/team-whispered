@@ -53,17 +53,17 @@ function parseContent<T = Frontmatter>(
     };
 }
 
-export function getAllWriteups(): MDXContent[] {
-    const files = getContentFiles("writeups");
+export function getAllBlogs(): MDXContent[] {
+    const files = getContentFiles("Blogs");
 
-    const writeups: MDXContent[] = [];
+    const Blogs: MDXContent[] = [];
 
     files.forEach((file) => {
         const slug = file.replace(/\.mdx$/, "");
-        const filePath = path.join(contentDirectory, "writeups", file);
+        const filePath = path.join(contentDirectory, "Blogs", file);
         try {
             const { frontmatter, content, readingTime } = parseContent(filePath);
-            writeups.push({
+            Blogs.push({
                 slug,
                 frontmatter,
                 content,
@@ -75,7 +75,7 @@ export function getAllWriteups(): MDXContent[] {
     });
 
     // Sort by date, newest first
-    return writeups.sort((a, b) => {
+    return Blogs.sort((a, b) => {
         const dateA = a.frontmatter.date ? new Date(a.frontmatter.date) : new Date(0);
         const dateB = b.frontmatter.date ? new Date(b.frontmatter.date) : new Date(0);
         return dateB.getTime() - dateA.getTime();
@@ -84,7 +84,7 @@ export function getAllWriteups(): MDXContent[] {
 
 export function getWriteupBySlug(slug: string): MDXContent | null {
     try {
-        const filePath = path.join(contentDirectory, "writeups", `${slug}.mdx`);
+        const filePath = path.join(contentDirectory, "Blogs", `${slug}.mdx`);
         const { frontmatter, content, readingTime } = parseContent(filePath);
 
         return {
