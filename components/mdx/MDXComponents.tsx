@@ -112,7 +112,7 @@ export const mdxComponents = {
             alt={alt || "Blog Image"}
             width={0}
             height={0}
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 60vw"
             style={{ width: "100%", height: "auto" }}
             {...(props as any)}
         />

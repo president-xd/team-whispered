@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     default: "wh1sp3r3d | Elite CTF Team",
     template: "%s | wh1sp3r3d",
   },
+  metadataBase: new URL("https://wh1sp3r3d.vercel.app"),
   description: "Elite cybersecurity team specializing in CTF competitions, and security research.",
   keywords: ["CTF", "cybersecurity", "hacking", "security research", "penetration testing", "crypto", "web", "pwn", "reverse", "mobile", "forensics", "stego", "binary"],
   authors: [{ name: "wh1sp3r3d" }],
