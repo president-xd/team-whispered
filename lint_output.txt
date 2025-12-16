@@ -1,0 +1,93 @@
+﻿
+> team-website@0.1.0 lint
+> eslint
+
+
+D:\Team_Website\team-website\app\join\page.tsx
+   17:73  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`         react/no-unescaped-entities
+   17:80  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`         react/no-unescaped-entities
+   34:43  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`         react/no-unescaped-entities
+   44:37  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`         react/no-unescaped-entities
+   44:48  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`         react/no-unescaped-entities
+   44:53  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`         react/no-unescaped-entities
+   44:73  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`         react/no-unescaped-entities
+  132:81  error  Comments inside children section of tag should be placed inside braces  react/jsx-no-comment-textnodes
+
+D:\Team_Website\team-website\app\page.tsx
+  8:30  warning  'Users' is defined but never used     @typescript-eslint/no-unused-vars
+  8:37  warning  'FileText' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\Team_Website\team-website\app\sponsors\page.tsx
+  17:11  warning  'silverSponsors' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  18:11  warning  'bronzeSponsors' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+D:\Team_Website\team-website\app\team\page.tsx
+  5:37  warning  'Trophy' is defined but never used    @typescript-eslint/no-unused-vars
+  5:69  warning  'Calendar' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\Team_Website\team-website\app\writeups\page.tsx
+  3:10  warning  'Button' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\Team_Website\team-website\components\layout\DockNavbar.tsx
+  12:11  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\Team_Website\team-website\components\layout\ThemeProvider.tsx
+  23:13  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+D:\Team_Website\team-website\components\layout\ThemeProvider.tsx:23:13
+  21 |         const stored = localStorage.getItem("theme") as Theme | null;
+  22 |         if (stored) {
+> 23 |             setThemeState(stored);
+     |             ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  24 |         }
+  25 |     }, []);
+  26 |  react-hooks/set-state-in-effect
+  44:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+D:\Team_Website\team-website\components\layout\ThemeProvider.tsx:44:9
+  42 |
+  43 |         root.classList.add(resolved);
+> 44 |         setResolvedTheme(resolved);
+     |         ^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  45 |         localStorage.setItem("theme", theme);
+  46 |     }, [theme]);
+  47 |                react-hooks/set-state-in-effect
+
+D:\Team_Website\team-website\components\mdx\MDXComponents.tsx
+   9:17  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  15:17  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  22:17  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  29:17  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  34:16  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  37:17  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  38:17  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  39:17  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  42:16  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  59:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  75:18  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  78:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  89:20  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\Team_Website\team-website\lib\mdx.ts
+   14:20  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   93:14  warning  'error' is defined but never used         @typescript-eslint/no-unused-vars
+  155:14  warning  'error' is defined but never used         @typescript-eslint/no-unused-vars
+  165:14  warning  'error' is defined but never used         @typescript-eslint/no-unused-vars
+
+D:\Team_Website\team-website\tailwind.config.ts
+  98:15  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+Γ£û 36 problems (26 errors, 10 warnings)
+

@@ -1,0 +1,82 @@
+---
+title: "Exploiting a Custom Crypto Challenge"
+date: "2024-12-10"
+tags: ["crypto", "python", "ctf"]
+authors: ["2", "1"]
+summary: "A detailed walkthrough of exploiting a custom cryptographic implementation with a timing attack vulnerability."
+cover: "/images/writeups/crypto-challenge.jpg"
+---
+
+## Overview
+
+This writeup covers a challenging cryptographic CTF problem where we discovered and exploited a timing attack vulnerability in a custom encryption implementation.
+
+<Callout type="note">
+This challenge was from the HackCon 2024 CTF competition.
+</Callout>
+
+## Initial Analysis
+
+When we first connected to the service, we were presented with an encryption oracle that would encrypt any message we provided:
+
+```python
+def encrypt(plaintext, key):
+    ciphertext = []
+    for i, char in enumerate(plaintext):
+        key_char = key[i % len(key)]
+        encrypted = (ord(char) + ord(key_char)) % 256
+        ciphertext.append(encrypted)
+    return bytes(ciphertext)
+```
+
+The implementation looked simple, but there was a critical flaw in the timing behavior.
+
+## Vulnerability Discovery
+
+After sending multiple requests, we noticed that the response time varied based on the input length. This suggested a potential timing attack vector.
+
+<Callout type="tip">
+Always measure response times when analyzing encryption oracles - timing side channels are more common than you think!
+</Callout>
+
+## Exploitation
+
+We developed a Python script to exploit the timing vulnerability:
+
+```python
+import time
+import requests
+
+def timing_attack(url, known_prefix=""):
+    charset = "abcdefghijklmnopqrstuvwxyz0123456789{}_"
+    
+    for char in charset:
+        test_input = known_prefix + char
+        start = time.time()
+        response = requests.post(url, data={"input": test_input})
+        elapsed = time.time() - start
+        
+        if elapsed > 0.5:  # Threshold
+            return char
+    
+    return None
+```
+
+## Flag Retrieval
+
+After running our exploit for several minutes, we successfully recovered the flag:
+
+<Callout type="danger" title="Flag">
+`flag{t1m1ng_4tt4cks_4r3_r34l}`
+</Callout>
+
+## Lessons Learned
+
+1. **Constant-time operations** are crucial for cryptographic implementations
+2. Timing attacks can be devastating even for simple encryption schemes
+3. Always measure and analyze timing behavior in security-critical code
+
+## References
+
+- [Timing Attacks on Implementations of Diffie-Hellman, RSA, DSS, and Other Systems](https://crypto.stanford.edu/~dabo/papers/ssl-timing.pdf)
+- [A Practical Implementation of the Timing Attack](https://www.cs.rice.edu/~dwallach/pub/timing2005.pdf)
