@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import { CodeBlock } from "./CodeBlock"; // This import will become unused
 import { Callout } from "./Callout";
@@ -106,8 +107,15 @@ export const mdxComponents = {
         alt,
         ...props
     }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img className={cn("rounded-md border", className)} alt={alt} {...props} />
+        <Image
+            className={cn("rounded-md border", className)}
+            alt={alt || "Blog Image"}
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: "100%", height: "auto" }}
+            {...(props as any)}
+        />
     ),
 
     // Horizontal rule
