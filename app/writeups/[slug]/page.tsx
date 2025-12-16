@@ -12,6 +12,7 @@ import Link from "next/link";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import remarkGfm from "remark-gfm";
 
 export async function generateStaticParams() {
     const writeups = getAllWriteups();
@@ -61,6 +62,7 @@ export default async function WriteupPage({
 
     const options = {
         mdxOptions: {
+            remarkPlugins: [remarkGfm],
             rehypePlugins: [
                 rehypeSlug,
                 [
