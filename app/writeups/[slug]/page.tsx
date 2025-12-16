@@ -141,7 +141,7 @@ export default async function WriteupPage({
                             )}
                         </div>
 
-                        <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-none prose-pre:bg-[#0d1117] prose-pre:border prose-pre:border-gray-800">
+                        <div className="prose dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-none prose-pre:bg-[#0d1117] prose-pre:border prose-pre:border-gray-800">
                             {/* @ts-expect-error Server Component */}
                             <MDXRemote source={writeup.content} components={mdxComponents} options={options} />
                         </div>
