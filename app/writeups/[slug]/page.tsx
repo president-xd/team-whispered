@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/Badge";
 import { ImageFrame } from "@/components/ui/ImageFrame";
 import { mdxComponents } from "@/components/mdx/MDXComponents";
 import { TableOfContents } from "@/components/mdx/TableOfContents"; // Import the new TOC component
+import { ScrollToContent } from "@/components/ui/ScrollToContent";
 import { Clock, Calendar } from "lucide-react";
 import Link from "next/link";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -95,7 +96,7 @@ export default async function WriteupPage({
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
                 {/* TOC Sidebar */}
                 <aside className="hidden lg:block lg:col-span-3">
-                    <div className="sticky top-24">
+                    <div className="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-muted-foreground/20 scrollbar-track-transparent">
                         <TableOfContents toc={toc} />
                     </div>
                 </aside>
@@ -103,7 +104,7 @@ export default async function WriteupPage({
                 {/* Main Content */}
                 <main className="lg:col-span-9">
                     <div className="max-w-3xl">
-                        <div className="space-y-6 border-b border-border pb-8 mb-10">
+                        <div className="relative space-y-6 border-b border-border pb-8 mb-10">
                             <Link
                                 href="/writeups"
                                 className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-block font-mono"
@@ -139,9 +140,12 @@ export default async function WriteupPage({
                                     ))}
                                 </div>
                             )}
+
+                            {/* Scroll Down Indicator */}
+                            {writeup.content && <ScrollToContent />}
                         </div>
 
-                        <div className="prose dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-none prose-pre:bg-[#0d1117] prose-pre:border prose-pre:border-gray-800">
+                        <div id="content-start" className="prose dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-none prose-pre:bg-[#0d1117] prose-pre:border prose-pre:border-gray-800">
                             {/* @ts-expect-error Server Component */}
                             <MDXRemote source={writeup.content} components={mdxComponents} options={options} />
                         </div>

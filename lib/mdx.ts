@@ -176,18 +176,18 @@ export function getJoinContent(): string {
     }
 }
 
+import GithubSlugger from "github-slugger";
+
 export function generateTableOfContents(content: string): TableOfContentsItem[] {
     const headingRegex = /^(#{2,4})\s+(.+)$/gm;
     const headings: TableOfContentsItem[] = [];
+    const slugger = new GithubSlugger();
     let match;
 
     while ((match = headingRegex.exec(content)) !== null) {
         const level = match[1].length;
         const title = match[2].trim();
-        const id = title
-            .toLowerCase()
-            .replace(/[^\w\s-]/g, "")
-            .replace(/\s+/g, "-");
+        const id = slugger.slug(title);
 
         headings.push({ id, title, level });
     }

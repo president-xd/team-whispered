@@ -17,22 +17,30 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
     const [activeId, setActiveId] = useState<string>("");
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActiveId(entry.target.id);
-                    }
-                });
-            },
-            { rootMargin: "0px 0px -80% 0px" }
-        );
+        const handleScroll = () => {
+            const headings = Array.from(document.querySelectorAll("h2, h3, h4"));
+            const scrollPosition = window.scrollY + 150; // Offset for sticky header
 
-        const headings = document.querySelectorAll("h2, h3, h4");
-        headings.forEach((heading) => observer.observe(heading));
+            // Find the last heading that is above the current scroll position
+            let currentActiveId = "";
+            for (const heading of headings) {
+                const element = heading as HTMLElement;
+                if (element.offsetTop <= scrollPosition) {
+                    currentActiveId = element.id;
+                } else {
+                    // Since headings are in order, once we find one below scrollPosition, we stop
+                    break;
+                }
+            }
+
+            if (currentActiveId) setActiveId(currentActiveId);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        handleScroll(); // Initial check
 
         return () => {
-            headings.forEach((heading) => observer.unobserve(heading));
+            window.removeEventListener("scroll", handleScroll);
         };
     }, []);
 
